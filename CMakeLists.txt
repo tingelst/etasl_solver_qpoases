@@ -8,7 +8,7 @@ cmake_minimum_required(VERSION 2.6.3)
 # This creates a standard cmake project. You may extend this file with
 # any cmake macro you see fit.
 #
-project(etasl_iohandler_jointstate)
+project(etasl_solver_qpoases)
 
 # Use 'source orocos_toolchain/env.sh' if the command below fails:
 find_package(OROCOS-RTT QUIET)

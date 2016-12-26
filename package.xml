@@ -1,7 +1,7 @@
 <package>
-  <name>etasl_iohandler_jointstate</name>
+  <name>etasl_solver_qpoases</name>
   <version>1.0.0</version>
-  <description>This package contains the components of the etasl_iohandler_jointstate package</description>
+  <description>This package for a component to create a qpoases solver in an etasl-rtt component</description>
   <maintainer email="Erwin.Aertbelien@kuleuven.be">Erwin Aertbelien</maintainer>
 
   <license>Unknown</license>
