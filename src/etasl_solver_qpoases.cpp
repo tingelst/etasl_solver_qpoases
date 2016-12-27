@@ -1,6 +1,8 @@
 #include "etasl_solver_qpoases.hpp"
 #include <rtt/Logger.hpp>
 #include <rtt/Component.hpp>
+#include <expressiongraph_tf/solver.hpp>
+#include <expressiongraph_tf/qpoases_solver.hpp>
 
 using namespace KDL;
 
@@ -13,11 +15,11 @@ etasl_solver_qpoases::etasl_solver_qpoases(std::string const& name) :
 {
   std::cout << "etasl_solver_qpoases constructed !" <<std::endl;
      this->addOperation("create_and_set_solver",&etasl_solver_qpoases::create_and_set_solver,this,RTT::OwnThread)
-        .doc("creates and adds a solver to the given etasl_rtt component")
+        .doc("creates and adds a solver to the given etasl_rtt component (using the properties of this factory component)")
         .arg("etasl_comp_name","name of the eTaSL component to add the port to");
-    this->addProperty("max_iterations",max_iterations).doc("Maximum iterations of the optimizer at each time step");
-    this->addProperty("max_cpu_time",max_cpu_time).doc("Maximum time to spend on the optimization at each time step");
-    this->addProperty("regularization",regularization).doc("Regularization factor to be used during optimization");
+    this->addProperty("max_iterations",max_iterations).doc("Maximum iterations of the optimizer at each time step (used when calling create_and_set_solver)");
+    this->addProperty("max_cpu_time",max_cpu_time).doc("Maximum time to spend on the optimization at each time step (used when calling create_and_set_solver)");
+    this->addProperty("regularization",regularization).doc("Regularization factor to be used during optimization (used when calling create_and_set_solver)");
  
 
 }
@@ -25,15 +27,13 @@ etasl_solver_qpoases::etasl_solver_qpoases(std::string const& name) :
 bool etasl_solver_qpoases::create_and_set_solver( const std::string& etaslcompname) {
     etasl_rtt* e = getComponent(etaslcompname);
     if (e==NULL) return false;
-/*    IOHandler::Ptr h( new KDL::IOHandler_controller_jointstate_output( e, e->state, jointnames, portname, portdocstring) );
-    if (h->initialize() ) {
-        e->ohc->addHandler( h );
-        return true;
-    } else {
-        RTT::log(RTT::Error) << "add_controller_jointstate_output() failed to initialize"<<RTT::endlog();
+    e->solver = boost::make_shared<qpOASESSolver>(max_iterations, max_cpu_time, regularization) ;
+    if (!e->solver) {
+        RTT::log(RTT::Error) << getName() << "Could not construct KDL::sotSolver object "<< RTT::endlog();
         return false;
     }
-    */
+    RTT::log(RTT::Info) << getName() << "A qpOases solver is created and set in "<< etaslcompname << RTT::endlog();
+    return true;
 }
 
 // internal routine that gets a pointer to the etasl_rtt component and performs a series of checks.
@@ -60,9 +60,10 @@ etasl_rtt* etasl_solver_qpoases::getComponent( const std::string & etaslcomp) {
         RTT::log(RTT::Error) << getName() << " : this operation can only be used in the PreOperational state"<<RTT::endlog();
         return 0;
     }
-    if (!e->etaslread) {
+/*    if (!e->etaslread) {
         RTT::log(RTT::Error) << getName() << " : this operation can only be used when an etasl definition has been read"<<RTT::endlog();
-    } 
+        return 0;
+    } */
     return e;
 }
 
