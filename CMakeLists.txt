@@ -17,7 +17,7 @@ if (NOT OROCOS-RTT_FOUND)
 endif()
 
 find_package(catkin REQUIRED COMPONENTS 
-    etasl_rtt expressiongraph_context expressiongraph_context_lua
+    etasl_rtt expressiongraph_context expressiongraph_context_lua expressiongraph_solver_qpoases
 )
 
 include_directories( include ${catkin_INCLUDE_DIRS})

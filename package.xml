@@ -19,6 +19,8 @@
   <run_depend>expressiongraph_context</run_depend>
   <build_depend>expressiongraph_context_lua</build_depend>
   <run_depend>expressiongraph_context_lua</run_depend>
+  <build_depend>expressiongraph_solver_qpoases</build_depend>
+  <run_depend>expressiongraph_solver_qpoases</run_depend>
   <run_depend>rtt</run_depend>
 
   <export>

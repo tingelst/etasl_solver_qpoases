@@ -1,8 +1,8 @@
 #include "etasl_solver_qpoases.hpp"
 #include <rtt/Logger.hpp>
 #include <rtt/Component.hpp>
-#include <expressiongraph_tf/solver.hpp>
-#include <expressiongraph_tf/qpoases_solver.hpp>
+#include <expressiongraph/solver.hpp>
+#include <expressiongraph/qpoases_solver.hpp>
 
 using namespace KDL;
 
