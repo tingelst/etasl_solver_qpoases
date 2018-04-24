@@ -4,7 +4,7 @@
   <description>This package for a component to create a qpoases solver in an etasl-rtt component</description>
   <maintainer email="Erwin.Aertbelien@kuleuven.be">Erwin Aertbelien</maintainer>
 
-  <license>Unknown</license>
+  <license>GNU LGPL v3</license>
 
   <url type="website"></url>
   <!-- <url type="bugtracker"></url> -->
