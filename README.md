@@ -1,5 +1,5 @@
 The etasl_solver_qpoases package
-============================
+================================
 
 Introduction
 ------------
@@ -15,10 +15,12 @@ For more information on stack-of-tasks, see http://stack-of-tasks.github.io/
 
 For more information on eTaSL, see https://people.mech.kuleuven.be/~eaertbel/etasl
 
+License
+-------
+GNU LGPL v3
 
 
-
-Auther
+Author
 ------
 
 Erwin Aertbeliën, 2016
