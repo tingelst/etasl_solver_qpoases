@@ -12,7 +12,6 @@
   <author>Erwin Aertbelien</author>
 
   <build_depend>rtt</build_depend>
-  <build_depend>orogen</build_depend>
   <build_depend>etasl_rtt</build_depend>
   <run_depend>etasl_rtt</run_depend>
   <build_depend>expressiongraph_context</build_depend>
