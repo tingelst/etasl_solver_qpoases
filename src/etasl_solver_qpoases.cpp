@@ -13,7 +13,6 @@ etasl_solver_qpoases::etasl_solver_qpoases(std::string const& name) :
     max_cpu_time(1000.0),
     regularization(1E-4)
 {
-  std::cout << "etasl_solver_qpoases constructed !" <<std::endl;
      this->addOperation("create_and_set_solver",&etasl_solver_qpoases::create_and_set_solver,this,RTT::OwnThread)
         .doc("creates and adds a solver to the given etasl_rtt component (using the properties of this factory component)")
         .arg("etasl_comp_name","name of the eTaSL component to add the port to");
